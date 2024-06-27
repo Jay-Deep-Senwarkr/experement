@@ -13,7 +13,7 @@ const AboutUs = () => {
           in mutual funds or gold? We’ve got you covered.
         </p>
         <p className="mb-4">
-          But that's not all – we also rock at website and graphic design,
+          But that`&apos;`s not all – we also rock at website and graphic design,
           ensuring your digital presence is just as strong. Plus, we do it all
           at super affordable rates without skimping on quality or reliability.
         </p>

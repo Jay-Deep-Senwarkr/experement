@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Toaster } from "./ui/toaster";
@@ -7,10 +7,10 @@ import { toast } from "./ui/use-toast";
 const ContactUs = () => {
   const [result, setResult] = React.useState("");
 
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResult("Sending....");
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.currentTarget);
 
     formData.append("access_key", "5329a34f-19da-4791-8d43-3065cd742a0e");
 
@@ -23,12 +23,13 @@ const ContactUs = () => {
 
     if (data.success) {
       toast({title:"Success", description:"Your message has been sent successfully."})
-      event.target.reset();
+      event.currentTarget.reset();
     } else {
       toast({title:"Failed", description:"Something went wrong please try again!"})
       setResult(data.message);
     }
   };
+
   return (
     <div className="p-6 flex flex-col w-[75%]  h-[70%] justify-center" id="ContactUs">
       <p className="text-3xl font-semibold mb-4 text-center text-white">Contact</p>
@@ -98,9 +99,9 @@ const ContactUs = () => {
           Send Message
         </button>
       </form>
-    <div className="">
-      <Toaster />
-    </div>
+      <div className="">
+        <Toaster />
+      </div>
     </div>
   );
 };

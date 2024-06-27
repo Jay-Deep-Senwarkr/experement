@@ -17,7 +17,7 @@ const Page = () => {
         <div className="flex w-1/2 justify-center items-center ">
           <Typewritting />
         </div>
-        <div className="flex w-1/2 justify-center  items-center">
+        <div className="flex w-1/2 justify-center  items-center drop-shadow-sm ">
           <ContactUs />
         </div>
       </main>

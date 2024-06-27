@@ -24,7 +24,6 @@ export const HoverEffect = ({
       )}
     >
       {items.map((item, idx) => {
-        const isLink = item?.link ? true : false;
         const cardContent = (
           <Card>
             <CardTitle>{item.title}</CardTitle>
@@ -57,7 +56,7 @@ export const HoverEffect = ({
               )}
             </AnimatePresence>
 
-            {isLink ? (
+            {item.link ? (
               <Link href={item.link} className="relative z-20 w-full h-full">
                 {cardContent}
               </Link>

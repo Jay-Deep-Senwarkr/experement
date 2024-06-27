@@ -2,7 +2,7 @@
 
 import { cn } from "@/utils/cn";
 import { motion, stagger, useAnimate, useInView } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 export const TypewriterEffect = ({
   words,
@@ -19,10 +19,10 @@ export const TypewriterEffect = ({
   loop?: boolean;
 }) => {
   // split text inside of words into array of characters
-  const wordsArray = words.map((word) => ({
+  const wordsArray = useMemo(() => words.map((word) => ({
     ...word,
     text: word.text.split(""),
-  }));
+  })), [words]);
 
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
@@ -64,7 +64,7 @@ export const TypewriterEffect = ({
 
       animation();
     }
-  }, [isInView, loopIndex]);
+  }, [isInView, loopIndex, animate, loop, wordsArray]);
 
   const renderWords = () => {
     return (
